@@ -1,0 +1,41 @@
+\documentclass{sig-alternate}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage[hyphens]{url}
+\usepackage{xspace}
+\usepackage{microtype}
+%\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{multirow, listings, longtable, afterpage, pdflscape,
+  tabularx, calc}
+
+\def\sharedaffiliation{
+\end{tabular}
+\begin{tabular}{c}}
+
+\pagenumbering{arabic}
+
+\begin{document}
+
+%opening
+\title{Towards Automatic Exploit Generation for Android C Libraries}
+\author{
+\alignauthor
+Bhargava Shastry, Lee SeoungKyou\\
+\sharedaffiliation
+      \affaddr{Rice University}\\
+      \affaddr{Houston, U.S.A.}\\
+}
+
+\maketitle
+
+\begin{abstract}
+Managing the security of complex systems poses a great challenge. Incremental software patches are by far the most common means of plugging security holes: be it at the level of the operating system kernel, the middleware or the applications.
+
+\end{abstract}
+
+\section{}
+
+\end{document}

@@ -1,0 +1,2 @@
+\section{Introduction} \label{sec:intro}
+A good example of staggered patch deployment is the Android mobile platform, where, due to fragmented variants of the platform (hardware and software), different phones seem to be running different versions of the Android operating system.

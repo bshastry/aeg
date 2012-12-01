@@ -1,0 +1,20 @@
+\section{Problem Statement} \label{prob_st}
+Formally, \ap proposes techniques for the automatic patch-based exploit generation problem: given a program $P$, and a patched version of the same program, $P'$, automatically generate an exploit for the potentially unknown vulnerability in $P$ but patched in $P'$. Furthermore, the work targets input validation vulnerabilities only: vulnerabilities arising out of invalid inputs to the program. Hence, the attack can be modelled as a constraint satisfaction problem, with the constraint that an input fail the input sanitisation checks added in $P'$ with an assumption that there is an exploit corresponding to a given input validation vulnerability. \ap argues that given that the delivery of patches is staggered over long time periods, there is a realistic time window in which unpatched systems are vulnerable to attack.
+
+In this project, we seek to emulate the work done in~\cite{apeg08} in a different setting. More precisely, our setting is different from theirs in the following ways:
+\begin{enumerate}
+ \item \ap works on closed-source binaries (executables), while we only consider open-source software. This lets us focus on the problem of automatic exploit generation and not worry about reverse engineering a patch. Specifically, our target of attack would be userspace libraries (written in C language) in the Android software stack e.g., \textit{bionic} libc, dalvik runtime libraries etc.
+ \item \ap proposes techniques based on dynamic program analysis only, static program analysis only and a mix of both, while we focus on static analysis only.
+\end{enumerate}
+
+\subsection{Methodology}\label{meth}
+The project could be logically divided into the following phases:
+\begin{enumerate}
+ \item Identify what constitutes a security patch for the attack target. This would need to be manually by looking up the commit history (log) of the target software.\footnote[1]{Android maintains a git repository for each component in its software stack. Commits are always tagged with textual comments about changes done.}
+ \item From the security patches thus identified, filter out those that do NOT address an input validation vulnerability e.g., focus on sanitisation checks added on program variables. The patches that remain are those that will constitute our exploitable set.
+ \item Using techniques from static analysis, identify which part of the unpatched software has an input validation vulnerability. This phase is going to be challenging becuase it is nontrivial to search for a variable sanitised in $P'$ that is used as an input in $P$. We would be relying upon the CIL infrastructure~\cite{cilpaper} for obtaining an intermediate representation (Abstract Syntax Tree) of the target software that is amenable to static analysis.
+ \item Express the problem of finding an exploitable input as a constraint satisfaction problem and rely upon Satisfiability Modulo Theories (SMT) solvers to obtain a solution to the problem.
+\end{enumerate}
+
+\subsection{Deliverables}\label{del}
+Building a framework for statically analysing the target software for possible input validation vulnerabilities would be a deliverable. However, the most important deliverable of this project would be (hopefully) a few hitherto unknown input validation vulnerabilities on a small portion (native libraries) of Android's software stack.

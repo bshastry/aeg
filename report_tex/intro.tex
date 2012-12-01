@@ -1,0 +1,7 @@
+\section{Introduction} \label{sec:intro}
+Managing the security of complex systems poses a great challenge. Incremental software patches are by far the most common means of plugging security holes: be it at the level of the operating system kernel, the middleware or the applications.
+
+Contrary to the view that security patches enhance the security of the software system, a recent work~\cite{apeg08}---henceforth refered to as \ap---shows that the former can actually help attackers in exploiting the very same vulnerabilities that were patched by exploiting the vulnerability on the unpatched system. Note that this is nontrivial: a security patch need not reveal the vulnerability in a straightforward way. One would need to analyse the target program to list program variables that are effected by the patch and where they are used. This entails significant work.
+
+
+A good example of staggered patch deployment is the Android mobile platform, where, due to fragmented variants of the platform (hardware and software), different phones seem to be running different versions of the Android operating system.
