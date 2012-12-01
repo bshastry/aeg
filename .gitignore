@@ -1,3 +1,7 @@
+*.tex.backup
+*.tex~
+*.cls~
+*.bib~
 *.acn
 *.acr
 *.alg
