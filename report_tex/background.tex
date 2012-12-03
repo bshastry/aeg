@@ -33,4 +33,15 @@ Let Algorithm~\ref{alg1} refer to a program P, consisting of statements $S_{1}, 
 
 Program statements $S_{1}, ... , S_{17}$ may contain variables ($x, y\in V$), arithmetic and boolean expressions ($E$), and be composed of assignment statements ($V:=E$) , if-then-else statements, and while loops.
 
-The triple $pre${$S$}$post$ is called a Hoare triple named after C.A.R. Hoare, a pioneer in the field of program verification. The Hoare triple is to be read as follows: If the pre-condition is satisfied by a program P consisting of statements $S_{i} \in S i=1,...,n$, then, on execution of the statements in $S$, the post-condition will necessarily be met. 
+The triple $pre$\{$S$\}$post$ is called a Hoare triple named after C.A.R. Hoare, a pioneer in the field of program verification. The Hoare triple is to be read as follows: If the pre-condition is satisfied by a program P consisting of statements $S_{i} \in S ,	i=1,...,n$, then, on execution of the statements in $S$, the post-condition will necessarily be satisfied should the program be correct and assuming that it terminates.
+
+\subsection{Weakest preconditions and strongest post conditions}
+We borrow introductory material and definitions of the weakest pre-condition and strongest post-condition in this section from~\cite{Gordon10}---a good survey of verification methods used today.
+
+Consider two boolean predicates $A$ and $B$. If the relation $A\implies B$ is true, then $A$ is said to be stronger than $B$ (since A implies B); conversely $B$ is said to be weaker than $A$.
+
+The strongest post-condition of a program $P$ with a pre-condition $pre$ is denoted by $Sp\{P\}\ pre$. The strongest post-condition is the predicate obtained by transforming the pre-condition according to the interpretation of program statements in $P$. The strongest post-condition is termed so because, given a predicate $post$ that is true of any state obtained by interpreting the program $P$ from an initial state where $pre$ holds, $Sp\{P\}\ pre\implies post$.
+
+The weakest pre-condition of a program with a post-condition $post$ is denoted by $Wp\{P\}\ post$. The weakest pre-condition is the predicate obtained by transforming the post-condition according to the interpretation of program statements in $P$ in reverse order. The weakest pre-condition is weaker than the $pre$ in that $pre\implies Wp\{P\}\ post$.
+
+A relation between the Hoare triple $pre$\{$S$\}$post$ for a given program $P$ and the weakest pre-condition $Wp$ and the strongest post-condition $Sp$ is that the Hoare triple holds if and only if $(Sp\ S\ pre)\implies post$ or if and only if $pre\implies (Wp\ S\ post)$.
