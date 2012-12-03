@@ -7,11 +7,14 @@
 \usepackage[hyphens]{url}
 \usepackage{xspace}
 \usepackage{microtype}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 %\usepackage[ruled,linesnumbered]{algorithm2e}
 \usepackage{multirow, listings, longtable, afterpage, pdflscape,
   tabularx, calc}
   
-\newcommand{\ap}{APEG\hspace{2pt}}  
+\newcommand{\ap}{APEG\hspace{2pt}}
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO: #1}}}
 
 \def\sharedaffiliation{
 \end{tabular}
@@ -28,7 +31,7 @@
 Bhargava Shastry, Lee SeoungKyou\\
 \sharedaffiliation
       \affaddr{Rice University}\\
-      \affaddr{Houston, U.S.A.}\\
+      \affaddr{Houston, USA}\\
 }
 
 \maketitle
@@ -44,6 +47,8 @@ This project is a step in the direction of building a static analysis framework 
 \input{prob_statement}
 
 \input{related_work}
+
+\input{background}
 
 \input{framework}
 

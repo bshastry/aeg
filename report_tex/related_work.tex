@@ -1,1 +1,14 @@
 \section{Related Work} \label{rel_work}
+While our work itself is based on the problem that the \ap defines, there is a broad literature of prior works in this direction.
+
+\subsection{Algorithmic trade-offs}
+The algorithms used in~\cite{apeg08} are derived from previous works~\cite{brumley06,brumley07}. Specifically,~\cite{brumley07} notes that constriant formulae derived using the weakest pre-condition for a given vulnerability tend to be compact and faster to solve; this benefit positively influences the number of control-flow paths that could be explored in turn resulting in fewer false negatives compared with other approaches to constraint formula generation.
+
+A key concern in related literature is the tension between soundness (in a logical sense) of the proposed mechnisms and the efficiency with which they operate i.e., time to uncover as many control-flow paths as possible. Logical soundness means that there could be false positives but no false negatives whatsoever. For a static analysis approach to be sound, it needs to enumerate possible control-flow paths exhaustively, thereby leading to a a complexity that is exponential in the number of branches in a given program.
+
+One can compromise on soundness by relaxing the requirement (for soundness) that all paths be explored; by exploring a subset of paths (possibly guided by complementary dynamic analysis), one could bring down the complexity of computing satisfiable constraint formulae from exponential to polynomial.
+
+\subsection{Automatic test case generation}
+Korat~\cite{korat} is an automatic test case generation tool for Java programs. It relies on an annotated version of a Java method and generates test inputs to the method that satisfy the method's pre-conditions (constraints on input space) and uses the method's post-condition (specification on the method's output) as a test oracle to evaluate the correctness of the method's output for the automatically generated inputs.
+
+A more targeted approach to test case generation is taken by the authors of~\cite{gotlieb}. In this paper, the problem is not to simply generate test cases for a given (C) program, but to actually generate test cases for those runs of the program in which a selected point in a given procedure is executed; this approach is termed goal-based test generation, the goal generation of inputs that implies execution of a certain control-flow path. The idea is closest to that in~\cite{apeg08}, where, inputs that fail a known check in the patched program are of interest.

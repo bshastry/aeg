@@ -1,0 +1,36 @@
+\section{Background} \label{background}
+\TODO{Talk of the following things: (1) Theory of program verification; program annotations for verification, pre-condition, post-condition; (2) Control-flow graph and its computation; (3) Approach employed in this project, perhaps a running example.}
+
+We will use the running example of a program (Algorithm~\ref{alg1}) that computes the $n^{th}$ power of a given integer to introduce the reader to program verification terminology. 
+
+\begin{algorithm}                      % enter the algorithm environment
+\caption{Calculate $y = x^n$}          % give the algorithm a caption
+\label{alg1}                           % and a label for \ref{} commands later in the document
+\begin{algorithmic}[1]                    % enter the algorithmic environment
+    \REQUIRE $n \geq 0 \vee x \neq 0$
+    \ENSURE $y = x^n$
+    \STATE $y \Leftarrow 1$
+    \IF{$n < 0$}
+        \STATE $X \Leftarrow 1 / x$
+        \STATE $N \Leftarrow -n$
+    \ELSE
+        \STATE $X \Leftarrow x$
+        \STATE $N \Leftarrow n$
+    \ENDIF
+    \WHILE{$N \neq 0$}
+        \IF{$N$ is even}
+            \STATE $X \Leftarrow X \times X$
+            \STATE $N \Leftarrow N / 2$
+        \ELSE[$N$ is odd]
+            \STATE $y \Leftarrow y \times X$
+            \STATE $N \Leftarrow N - 1$
+        \ENDIF
+    \ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+Let Algorithm~\ref{alg1} refer to a program P, consisting of statements $S_{1}, S{2}, ..., S{17}$. The pre-condition, $pre$, of program P formalises conditions that are required to be satisfied by the program prior to its execution; in the present example, it is a function of $x$ and $n$. The post-condition of the program, $post$, formalises conditions that are required to be satisfied by the program after its execution. Note that $pre$ and $post$ are both expressions in first order logic i.e., a boolean predicate.
+
+Program statements $S_{1}, ... , S_{17}$ may contain variables ($x, y\in V$), arithmetic and boolean expressions ($E$), and be composed of assignment statements ($V:=E$) , if-then-else statements, and while loops.
+
+The triple $pre${$S$}$post$ is called a Hoare triple named after C.A.R. Hoare, a pioneer in the field of program verification. The Hoare triple is to be read as follows: If the pre-condition is satisfied by a program P consisting of statements $S_{i} \in S i=1,...,n$, then, on execution of the statements in $S$, the post-condition will necessarily be met. 

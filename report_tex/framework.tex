@@ -1,1 +1,9 @@
 \section{Framework} \label{framework}
+\TODO{Talk about what we have built: a framework that is capable of statically analysing C code. How far are we from what we set out to do? Our framework can currently scan simple C code and infer certain properties (abstractions about program variables) about it. This has to be applied to the problem of exploit generation; specifically generating weakest pre-condition, given a program and a patch.
+Tools we use:
+Ocaml: functional language that is type safe and models effects.
+CIL: Compiler front-end for C programs. Good for static analysis.
+CIL-template: Sample programs for CIL. Build scripts reused.
+}
+Our framework for static analysis is modeled for a subset of the C language: it supports simple linear arithmetic---the use of $+$ and $\times$ operator on program variables and constants. 
+
