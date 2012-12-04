@@ -658,5 +658,5 @@ let evenOddAnalysis (fd : fundec) (loc : location) : unit =
   ignore(visitCilFunction vis fd); 
   HT.iter (fun k v -> (if !targetLine = k then (print_string (""^(z3_string_of_varmap_list v)^"\n(check-sat)\n(get-model)\n")) else () )) lineTable
 
-let tut18 (f : file) : unit =
+let tut16 (f : file) : unit =
   iterGlobals f (onlyFunctions evenOddAnalysis)

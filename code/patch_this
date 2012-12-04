@@ -1,0 +1,35 @@
+diff -r 075c2273187f Makefile.in
+--- a/Makefile.in	Tue Sep 18 14:15:35 2012 +0200
++++ b/Makefile.in	Mon Oct 01 19:23:38 2012 -0500
+@@ -65,7 +65,7 @@
+ # Add additional modules here. Order matters. If module x depends on module y,
+ # then x has to come after y in the list.
+ MODULES = tututil ciltutoptions \
+-          tut0 tut1 tut2 tut3 tut4 tut5 tut6 tut7 tut8 tut9 tut10 tut11 tut12 tut13 tut14 tut15 main
++          tut0 tut1 tut2 tut3 tut4 tut5 tut6 tut7 tut8 tut9 tut10 tut11 tut12 tut13 tut14 tut15 tut16 main
+ 
+ OCAMLFIND = @OCAMLFIND@
+ CILINC = $(shell $(OCAMLFIND) query cil)
+diff -r 075c2273187f src/ciltutoptions.ml
+--- a/src/ciltutoptions.ml	Tue Sep 18 14:15:35 2012 +0200
++++ b/src/ciltutoptions.ml	Mon Oct 01 19:23:38 2012 -0500
+@@ -15,7 +15,7 @@
+ let home : string ref = ref ""
+ let merge : bool ref = ref false
+ 
+-let num_tuts = 16
++let num_tuts = 17
+ let enable_tut : bool ref array = Array.init num_tuts (fun i -> ref false)
+ 
+ let prover : string ref = ref "Alt-Ergo"
+diff -r 075c2273187f src/main.ml
+--- a/src/main.ml	Tue Sep 18 14:15:35 2012 +0200
++++ b/src/main.ml	Mon Oct 01 19:23:38 2012 -0500
+@@ -38,6 +38,7 @@
+   if !(O.enable_tut.(13)) then Tut13.tut13 cil;
+   if !(O.enable_tut.(14)) then Tut14.tut14 cil;
+   if !(O.enable_tut.(15)) then Tut15.tut15 cil;
++  if !(O.enable_tut.(16)) then Tut16.tut16 cil;
+   outputFile cil
+ ;;
+ 
